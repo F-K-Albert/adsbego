@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ADS BEGO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =======================
+           GLOBAL STYLES & VARIABLES
+           ======================= */
+        :root {
+            --primary: #1a5276;
+            --secondary: #2e86c1;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --text: #333;
+            --text-light: #777;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 80px;
+            /* For fixed header */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+
+        /* =======================
+           HEADER & NAVIGATION
+           ======================= */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        #joinUsBtn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        #joinUsBtn:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .menu-list {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .menu-list a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .menu-list a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* =======================
+           HERO SECTION
+           ======================= */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* =======================
+           ABOUT US SECTION
+           ======================= */
+        .about-us {
+            background-color: white;
+            padding: 5rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .about-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-heading {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-subheading {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .about-mission {
+            font-style: italic;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            margin: 1rem 0;
+        }
+
+        .about-list {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* =======================
+           FEATURES SECTION
+           ======================= */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+
+        .feature {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature p {
+            color: var(--text-light);
+        }
+
+        /* =======================
+           TESTIMONIALS
+           ======================= */
+        .testimonials {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* =======================
+           STATS SECTION
+           ======================= */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* =======================
+           FOOTER
+           ======================= */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .footer ul li a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .footer .legal-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer .legal-links li a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer .legal-links li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* =======================
+           RESPONSIVE STYLES
+           ======================= */
+        @media (max-width: 992px) {
+            .menu-list {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background-color: var(--primary);
+                width: 250px;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .menu-list.active {
+                left: 0;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-text p {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .footer ul {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header - Consistent across all pages -->
+    <header>
+        <div class="logo-container">
+            <img src="../pictures/Ads Bego Logo.png" alt="Ads Bego Investment Logo" width="100" height="100"
+                class="logo-hover">
+            <div class="logo-text">
+                <h1>ADS BEGO</h1>
+                <p>Invest in Your Future with Confidence</p>
+            </div>
+        </div>
+
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+        <ul class="menu-list" id="menuList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="plans.html">Plan</a></li>
+            <li><a href="fund.html">Our Fund</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button id="joinUsBtn" onclick="window.location.href='join.html'">Get Started</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>About ADS BEGO</h2>
+        <p>Learn about our mission, values, and the team behind our successful investment strategies.</p>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <h2 class="about-title">Our Story</h2>
+        <div class="about-content">
+            <h3 class="about-heading"><strong>Executive Summary</strong></h3>
+            <p>
+                Ads Bego is a private investment partnership that leverages disciplined portfolio management across
+                stocks, commodities, and cryptocurrencies to deliver risk-adjusted returns. We combine active trading
+                strategies with long-term asset appreciation to grow partner capital.
+            </p>
+            <ul class="about-list">
+                <li><strong>Diversified Exposure:</strong> 40/30/30 allocation across three high-growth asset classes.
+                </li>
+                <li><strong>Structured Plans:</strong> Tailored options for short-term (12-month) and long-term (3-year)
+                    investors.</li>
+                <li><strong>Transparent Operations:</strong> Quarterly performance reporting and full risk disclosure.
+                </li>
+            </ul>
+
+            <!-- Investment Portfolio Structure -->
+            <h3 class="about-heading"><strong>Investment Portfolio Structure</strong></h3>
+            <p>Our carefully calibrated portfolio allocation maximizes returns while managing risk through
+                diversification:</p>
+
+            <h4 class="about-subheading">Primary Allocation - Shares/Equities:</h4>
+            <p><strong>70%</strong> of our portfolio is invested in carefully selected public companies across growing
+                sectors including technology, healthcare, and renewable energy.</p>
+
+            <h4 class="about-subheading">Securities Trading - Diversified Approach:</h4>
+            <p><strong>20%</strong> of our capital is actively managed across three key markets:</p>
+            <ul class="about-list">
+                <li><strong>Stock Trading (40%):</strong> Short to medium-term positions in high-potential equities</li>
+                <li><strong>Binance Cryptocurrency (30%):</strong> Strategic positions in major cryptocurrencies and
+                    select altcoins</li>
+                <li><strong>Forex Trading (30%):</strong> Currency pair trading with emphasis on major global currencies
+                </li>
+            </ul>
+
+            <h4 class="about-subheading">Sustainable Investments - Agro-Trade:</h4>
+            <p><strong>10%</strong> allocated to Perus Agro-Trade, supporting sustainable agriculture and commodity
+                trading with strong social impact.</p>
+
+            <h3 class="about-heading"><strong>Mission &amp; Values</strong></h3>
+            <h4 class="about-subheading">Mission:</h4>
+            <p class="about-mission">
+                "To generate consistent, market-leading returns through research-driven investments while prioritizing
+                capital preservation and partner education."
+            </p>
+            <h4 class="about-subheading">Core Values:</h4>
+            <ul class="about-list">
+                <li><strong>Transparency:</strong> Clear communication of strategies, fees, and risks.</li>
+                <li><strong>Accountability:</strong> Aligned incentives—we profit only when partners do.</li>
+                <li><strong>Innovation:</strong> Adaptive strategies for evolving markets.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <div class="container">
+        <h2 class="section-title">Our Approach</h2>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-search-dollar"></i>
+                <h3>Market Analysis</h3>
+                <p>Our experts conduct thorough market research to identify the best opportunities across asset classes.
+                </p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Portfolio Construction</h3>
+                <p>We build diversified portfolios tailored to your risk tolerance and investment goals.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Active Management</h3>
+                <p>Our team continuously monitors and adjusts your portfolio to capitalize on market movements.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Investors Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p class="testimonial-text">"I've seen a 34% return on my investment in just 12 months. The team at ADS
+                    BEGO is transparent and professional."</p>
+                <p class="testimonial-author">- Miss Martha Pearl, Long-term Partner</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"The educational resources and regular updates make me feel confident about
+                    where my money is invested."</p>
+                <p class="testimonial-author">- Miss Peace Melorwo, Long-term Partner</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Finally an investment firm that explains complex strategies in simple
+                    terms. My wealth keeps on growing."</p>
+                <p class="testimonial-author">Mr. Isaac Arkoh, Long-term Partner</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stat-item">
+            <h3>+$10,000</h3>
+            <p>Assets Under Management</p>
+        </div>
+        <div class="stat-item">
+            <h3>14.7%</h3>
+            <p>Average Annual Return</p>
+        </div>
+        <div class="stat-item">
+            <h3>20+</h3>
+            <p>Satisfied Investors</p>
+        </div>
+        <div class="stat-item">
+            <h3>67%</h3>
+            <p>Retention Rate</p>
+        </div>
+    </div>
+
+    <!-- Footer - Consistent across all pages -->
+    <footer class="footer">
+        <p>Join us today and take the first step towards a brighter financial future!</p>
+        <p>Contact us at: <a href="mailto:adsbego@gmail.com">adsbego@gmail.com</a></p>
+        <p>Follow us on social media:</p>
+        <ul>
+            <li><a href="https://www.facebook.com/AdsBego" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.twitter.com/AdsBego" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com/AdsBego" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/adsbego" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </li>
+            <li><a href="https://www.youtube.com/channel/AdsBego" target="_blank"><i class="fab fa-youtube"></i></a>
+                 <li><a href="https://whatsapp.com/channel/0029VbBsTGt7z4kc4Z5H1M0j" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+            </li>
+        </ul>
+         <p>Legal Documents:</p>
+        <ul class="legal-links">
+            <li><a href="../Legal/agreement.html">Agreement</a></li>
+            <li><a href="../Legal/compliance.html">Compliance</a></li>
+            <li><a href="../Legal/Privacy Policy.html">Privacy Policy</a></li>
+            <li><a href="../Legal/Risk Disclosure.html">Risk Disclosure</a></li>
+            <li><a href="../Legal/Terms and Conditions.html">Terms and Conditions</a></li>
+        </ul>
+        <div class="copyright">
+            <p>&copy; 2023 ADS BEGO. All rights reserved.</p>
+            <p>Investments involve risks. Past performance is not indicative of future results.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle function
+        function toggleMenu() {
+            const menuList = document.getElementById('menuList');
+            menuList.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const menuList = document.getElementById('menuList');
+            const menuIcon = document.querySelector('.menu-icon');
+
+            if (!menuList.contains(event.target) && !menuIcon.contains(event.target)) {
+                menuList.classList.remove('active');
+            }
+        });
+
+        // Simple animation for stats counter
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Animate stats when they come into view
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statItems = entry.target.querySelectorAll('.stat-item h3');
+                        statItems.forEach(item => {
+                            const text = item.textContent;
+                            let value;
+
+                            if (text.includes('%')) {
+                                value = parseFloat(text.replace('%', ''));
+                                animateValue(item, 0, value, 2000);
+                                // Add % back after animation
+                                setTimeout(() => {
+                                    item.textContent = text;
+                                }, 2000);
+                            } else if (text.includes('$')) {
+                                value = parseInt(text.replace('$', '').replace(',', ''));
+                                animateValue(item, 0, value, 2000);
+                                // Add $ back after animation
+                                setTimeout(() => {
+                                    item.textContent = text;
+                                }, 2000);
+                            } else {
+                                value = parseInt(text.replace('+', '').replace(',', ''));
+                                if (!isNaN(value)) {
+                                    animateValue(item, 0, value, 2000);
+                                }
+                            }
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+    </script>
+</body>
+
+</html>
